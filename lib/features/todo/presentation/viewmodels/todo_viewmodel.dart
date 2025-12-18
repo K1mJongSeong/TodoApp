@@ -15,4 +15,27 @@ class ToDoViewModel extends ChangeNotifier {
     );
     notifyListeners();
   }
+
+  void toggleDone(int index) {
+    final todo = _todos[index];
+    _todos[index] = ToDoEntity(
+      title: todo.title,
+      description: todo.description,
+      isFavorite: todo.isFavorite,
+      isDone: !todo.isDone,
+    );
+    notifyListeners();
+  }
+
+  void toggleFavorite(int index) {
+    final todo = _todos[index];
+    _todos[index] = ToDoEntity(
+      title: todo.title,
+      description: todo.description,
+      isFavorite: !todo.isFavorite,
+      isDone: todo.isDone,
+    );
+    notifyListeners();
+  }
+
 }

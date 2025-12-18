@@ -4,7 +4,9 @@ import 'package:provider/provider.dart';
 
 import '../widgets/add_todo_button.dart';
 import '../widgets/todo_card.dart';
+import '../widgets/todo_view.dart';
 import 'add_todo_bottom_sheet.dart';
+import 'no_todo.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -35,11 +37,19 @@ class HomePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: ListView.builder(
+        child: viewModel.todos.isEmpty
+            ? const NoToDo()
+            : ListView.builder(
           itemCount: viewModel.todos.length,
-          itemBuilder: (_, index) {
+          itemBuilder: (context, index) {
             final todo = viewModel.todos[index];
-            return TodoCard(title: todo.title);
+            return ToDoView(
+              toDo: todo,
+              onToggleDone: () =>
+                  context.read<ToDoViewModel>().toggleDone(index),
+              onToggleFavorite: () =>
+                  context.read<ToDoViewModel>().toggleFavorite(index),
+            );
           },
         ),
       ),
