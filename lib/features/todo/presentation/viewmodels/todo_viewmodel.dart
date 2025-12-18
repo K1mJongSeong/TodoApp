@@ -6,7 +6,7 @@ class ToDoViewModel extends ChangeNotifier {
   final List<ToDoEntity> _todos = [];
   List<ToDoEntity> get todos => _todos;
 
-  void addTodo() {
+  void addTodo(result) {
     _todos.add(
       ToDoEntity(
         title: "New Todo",
