@@ -18,7 +18,7 @@ class TodoCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            'assets/images/sample.webp',
+            'assets/images/jelly.webp',
             width: 100,
             height: 100,
           ),
