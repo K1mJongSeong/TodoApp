@@ -7,6 +7,7 @@ import '../widgets/add_todo_button.dart';
 import '../widgets/todo_view.dart';
 import 'add_todo_bottom_sheet.dart';
 import 'no_todo.dart';
+import 'todo_detail_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -82,6 +83,13 @@ class HomePage extends StatelessWidget {
                         context.read<ToDoViewModel>().toggleFavorite(index),
                     onDelete: () =>
                         context.read<ToDoViewModel>().deleteTodo(index),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => ToDoDetailPage(todoIndex: index),
+                        ),
+                      );
+                    },
                   );
                 },
               ),

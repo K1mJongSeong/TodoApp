@@ -7,6 +7,7 @@ class ToDoView extends StatelessWidget {
   final VoidCallback onToggleFavorite;
   final VoidCallback onToggleDone;
   final VoidCallback? onDelete;
+  final VoidCallback? onTap;
 
   const ToDoView({
     super.key,
@@ -14,6 +15,7 @@ class ToDoView extends StatelessWidget {
     required this.onToggleFavorite,
     required this.onToggleDone,
     this.onDelete,
+    this.onTap,
   });
 
   String _formatDueDate(DateTime date) {
@@ -78,7 +80,7 @@ class ToDoView extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: onToggleDone,
+            onTap: onTap,
             borderRadius: BorderRadius.circular(12),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
